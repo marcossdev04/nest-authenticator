@@ -1,5 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger"
-
+import { ApiProperty } from "@nestjs/swagger";
 export class CreateUserDto {
     @ApiProperty({
         description: 'Nome do usuário',
@@ -18,5 +17,4 @@ export class CreateUserDto {
         example: 'jWTAuth123'
     })
     password: string
-
 }
