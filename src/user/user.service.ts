@@ -23,7 +23,7 @@ export class UserService {
         }
     }
 
-    async create({ email, name, password }: CreateUserDto) {
+    async create({ email, username, password }: CreateUserDto) {
         if (
             await this.usersRepository.exists({
                 where: {
@@ -35,7 +35,7 @@ export class UserService {
         }
         const user = this.usersRepository.create({
             email,
-            username: name,
+            username,
             password,
         })
         return this.usersRepository.save(user)
@@ -51,11 +51,11 @@ export class UserService {
         })
     }
 
-    async update(id: number, { email, name, password }: UpdateUserDto) {
+    async update(id: number, { email, password }: UpdateUserDto) {
         await this.isValidId(id)
         await this.usersRepository.update(id, {
             email,
-            username: name,
+            id,
             password,
         })
         return this.findOne(id)
