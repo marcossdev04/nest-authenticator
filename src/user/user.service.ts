@@ -18,7 +18,6 @@ export class UserService {
                 id,
             },
         });
-
         if (!user) {
             throw new HttpException(`O usuário ${id} não existe.`, HttpStatus.BAD_REQUEST);
         }
@@ -41,14 +40,17 @@ export class UserService {
         })
         return this.usersRepository.save(user)
     }
+
     async findAll() {
         return await this.usersRepository.find()
     }
+
     async findOne(id: number) {
         return await this.usersRepository.findOneBy({
             id
         })
     }
+
     async update(id: number, { email, name, password }: UpdateUserDto) {
         await this.isValidId(id)
         await this.usersRepository.update(id, {
@@ -58,6 +60,7 @@ export class UserService {
         })
         return this.findOne(id)
     }
+
     async delete(id: number) {
         await this.isValidId(id)
         await this.usersRepository.delete(id)

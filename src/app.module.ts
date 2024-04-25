@@ -1,19 +1,21 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module, forwardRef } from '@nestjs/common';
 import { AuthModule } from './auth/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
 import { UserEntity } from './user/entity/user.entity';
-import { UserController } from './user/user.controller';
-import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
-import { AuthController } from './auth/auth/auth.controller';
-
+import { MooviesModule } from './movies/moovies.module';
+import { CacheModule } from '@nestjs/cache-manager';
+import { MooviesEntity } from './movies/entity/moovies.entity';
 @Module({
   imports: [
+    forwardRef(() => AuthModule),
+    forwardRef(() => UserModule),
+    forwardRef(() => MooviesModule),
     UserModule,
     AuthModule,
+    CacheModule.register({
+      isGlobal: true
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -21,9 +23,10 @@ import { AuthController } from './auth/auth/auth.controller';
       username: 'postgres',
       password: '010203',
       database: 'postgres',
-      entities: [UserEntity],
+      entities: [UserEntity, MooviesEntity],
       synchronize: true,
     }),
+    MooviesModule,
   ],
   controllers: [],
   providers: [],
