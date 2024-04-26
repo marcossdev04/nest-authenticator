@@ -14,7 +14,7 @@ services:
   db:
     image: postgres
     restart: always
-    environment: -POSTGRES_USER=postgres -POSTGRES_PASSWORD=010203 -POSTGRES_DB=localhost
+    environment: -POSTGRES_USER=postgres -POSTGRES_PASSWORD=010203 -POSTGRES_DB=api_jwt-auth
     container_name: postgres
     volumes:
       - ./pgdata:/var/lib/postgresql/data
