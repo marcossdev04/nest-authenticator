@@ -21,7 +21,7 @@ import { MooviesEntity } from './movies/entity/moovies.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '010203',
+      password: 'docker',
       database: 'jwtAuth',
       entities: [UserEntity, MooviesEntity],
       synchronize: false,
