@@ -22,7 +22,7 @@ import { MooviesEntity } from './movies/entity/moovies.entity';
       port: 5432,
       username: 'postgres',
       password: '010203',
-      database: 'postgres',
+      database: 'jwtAuth',
       entities: [UserEntity, MooviesEntity],
       synchronize: true,
     }),
