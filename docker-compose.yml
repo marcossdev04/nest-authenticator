@@ -10,7 +10,7 @@ services:
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=docker -POSTGRES_DB:jwtAuth
+      - POSTGRES_PASSWORD=docker -POSTGRES_DB=jwtAuth
   redis:
     container_name: redis-cache
     image: redis
