@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     build: .
-    container_name: jwt-auth
+    container_name: marcosdev_db
     restart: always
     ports:
       - '5432:5432'

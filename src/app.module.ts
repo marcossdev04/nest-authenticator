@@ -18,7 +18,7 @@ import { MooviesEntity } from './movies/entity/moovies.entity';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'db',
+      host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: '010203',
