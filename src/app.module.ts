@@ -24,7 +24,7 @@ import { MooviesEntity } from './movies/entity/moovies.entity';
       password: '010203',
       database: 'jwtAuth',
       entities: [UserEntity, MooviesEntity],
-      synchronize: true,
+      synchronize: false,
     }),
     MooviesModule,
   ],
