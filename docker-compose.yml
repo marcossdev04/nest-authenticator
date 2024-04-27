@@ -1,6 +1,16 @@
-version: '3.5'
+version: '3.1'
 
 services:
+  db:
+    build: .
+    container_name: jwt-auth
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker -POSTGRES_DB:jwtAuth
   redis:
     container_name: redis-cache
     image: redis
@@ -10,13 +20,3 @@ services:
       - REDIS_DB=projeto
     ports:
       - "6379:6379"
-
-  db:
-    image: postgres
-    restart: always
-    environment:
-      - POSTGRES_PASSWORD=true
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
