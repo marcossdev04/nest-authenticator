@@ -8,6 +8,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { MooviesEntity } from './movies/entity/moovies.entity';
 @Module({
   imports: [
+
     forwardRef(() => AuthModule),
     forwardRef(() => UserModule),
     forwardRef(() => MooviesModule),
@@ -18,12 +19,13 @@ import { MooviesEntity } from './movies/entity/moovies.entity';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ceu9lmqblp8t3q.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+      host: 'localhost',
       port: 5432,
-      username: 'u8hol6ltgtf1s6',
-      password: 'pd1f416fdd8936ea9f912aaa40c7612d07b4155777b89e44383b48d59e07328ef',
-      database: 'd1rkp860hf5ah5',
+      username: 'postgres',
+      password: '010203',
+      database: 'postgres',
       entities: [UserEntity, MooviesEntity],
+      synchronize: true,
     }),
     MooviesModule,
   ],
